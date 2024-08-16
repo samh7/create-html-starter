@@ -1,5 +1,5 @@
 {
-  "name": "html-boilerplate",
+  "name": "html-starter-boilerplate",
   "version": "0.0.1",
   "description": "Creates an html project and initializes tailwindcss. Tailwind must be installed for the command to work.",
   "main": "script.js",
