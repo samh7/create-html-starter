@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const path = require("path");
 const readline = require("readline");
-
+const fs = require('fs');
 function createHTMLBoilerplate(title) {
   return `
 <!DOCTYPE html>
