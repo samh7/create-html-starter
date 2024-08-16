@@ -1,4 +1,4 @@
-# html-starter-boilerplate
+# create-html-starter
 
 # NOTE
 
@@ -9,12 +9,12 @@
 
 Run either:
 
-- `npm i html-starter-boilerplate` for local install.
-- `npm i -g html-starter-boilerplate` for global install.
+- `npm i create-html-starter` for local install.
+- `npm i -g create-html-starter` for global install.
 
 # Use
 
 Run:
 
-- `html-starter-boilerplate` or `npx html-starter-boilerplate` then follow the given instructions.
+- `create-html-starter` or `npx create-html-starter` then follow the given instructions.
 - `pnpx` might not work so just use `npx`.
