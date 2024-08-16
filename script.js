@@ -1,4 +1,4 @@
-const fs = require("fs");
+#!/usr/bin/env node
 const path = require("path");
 const readline = require("readline");
 
