@@ -16,5 +16,5 @@ Run either:
 
 Run:
 
-- `npx html-starter-boilerplate` then follow the given instructions.
+- `html-starter-boilerplate` or `npx html-starter-boilerplate` then follow the given instructions.
 - `pnpx` might not work so just use `npx`.
