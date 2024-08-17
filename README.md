@@ -16,5 +16,5 @@ Run either:
 
 Run:
 
-- `npx create-html-starter` then follow the given instructions.
+- `create-html-starter` or `npx create-html-starter` then follow the given instructions.
 - `pnpx` might not work so just use `npx`.
