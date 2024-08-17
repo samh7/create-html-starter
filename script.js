@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const path = require("path");
 const readline = require("readline");
-const fs = require('fs');
+const fs = require("fs");
 function createHTMLBoilerplate(title) {
   return `
 <!DOCTYPE html>
@@ -19,7 +19,6 @@ function createHTMLBoilerplate(title) {
 </html>
 `;
 }
-
 function createProjectBoilerPlate(folderName) {
   const folderPath = path.join(__dirname, folderName);
 

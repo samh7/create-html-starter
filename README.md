@@ -14,7 +14,7 @@ Run either:
 
 # Use
 
-Run:
+- Clone the Repo then run:
 
-- `npx create-html-starter` then follow the given instructions.
+- `npx /path/to/cloned/repo/create-html-starter` in the folder yout want to initialize the project at then follow the given instructions.
 - `pnpx` might not work so just use `npx`.
