@@ -20,7 +20,8 @@ function createHTMLBoilerplate(title) {
 `;
 }
 function createProjectBoilerPlate(folderName) {
-  const folderPath = path.join(__dirname, folderName);
+  const rootPath = path.resolve();
+  const folderPath = path.join(rootPath, folderName);
 
   if (!fs.existsSync(folderPath)) {
     fs.mkdirSync(folderPath, { recursive: true });
