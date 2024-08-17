@@ -15,6 +15,9 @@
   "author": "samh7",
   "license": "ISC",
   "dependencies": {
-    "html-starter-boilerplate": "^0.0.6"
+    "html-starter-boilerplate": "^0.0.6",
+    "path": "^0.12.7",
+    "readline": "^4.4.4",
+    "fs": "^0.1.10"
   }
 }
