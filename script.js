@@ -2,9 +2,38 @@
 const path = require("path");
 const readline = require("readline");
 const fs = require("fs");
-function createHTMLBoilerplate(title) {
-  return `
-<!DOCTYPE html>
+
+const stylesContent = `@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.fill-screen {
+  width: 100vw;
+  height: 100vh;
+}`;
+
+const tailwindConfigContentd = `/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./*.{js,html}"],
+  theme: {
+    // screens: {
+    //   sm: "480px",
+    //   md: "768px",
+    //   lg: "976px",
+    //   xl: "1440px",
+    // },
+    // extend: {
+    //   colors: {
+    //     light_greyish: "#cccccc",
+    //     "new-color": "green",
+    //   },
+    // },
+  },
+  plugins: [],
+};`;
+
+const createHTMLBoilerplate = (title) => {
+  return `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -13,13 +42,17 @@ function createHTMLBoilerplate(title) {
     <link rel="stylesheet" href="./style.css" />
     <script defer src="./script.js"></script>
   </head>
-  <body>
-    
+  <body class="fill-screen bg-black">
+    <!-- Your Code Goes Here -->    
   </body>
-</html>
+</html>`;
+};
+
+const readmeContents = (projectName) => `# ${projectName.toUpperCase()}\n
+- Run: npx tailwindcss -i in.css -o style.css --watch 
 `;
-}
-function createProjectBoilerPlate(folderName) {
+
+function writeAll(folderName) {
   const rootPath = path.resolve();
   const folderPath = path.join(rootPath, folderName);
 
@@ -27,73 +60,23 @@ function createProjectBoilerPlate(folderName) {
     fs.mkdirSync(folderPath, { recursive: true });
   }
 
-  const filePath = path.join(folderPath, "index.html");
-  const content = createHTMLBoilerplate(folderName);
-  const styles_content = `
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-  `;
-
-  fs.writeFile(filePath, content, (err) => {
-    if (err) {
-      console.error("Error creating file:", err);
-    } else {
-      // console.log("File created successfully:", filePath);
-    }
+  [
+    ["index.html", createHTMLBoilerplate(folderName)],
+    ["style.css", ""],
+    ["in.css", stylesContent],
+    ["tailwind.config.js", tailwindConfigContentd],
+    ["script.js", ""],
+    ["README.md", readmeContents(folderName)],
+  ].forEach((file) => {
+    writeFile(path.join(folderPath, file[0]), file[1]);
   });
+}
 
-  const filePath2 = path.join(folderPath, "style.css");
-
-  fs.writeFile(filePath2, styles_content, (err) => {
+function writeFile(filePath, contents) {
+  fs.writeFile(filePath, contents, (err) => {
     if (err) {
       console.error("Error creating file:", err);
     } else {
-      // console.log("File created successfully:", filePath2);
-    }
-  });
-
-  const filePath3 = path.join(folderPath, "script.js");
-
-  fs.writeFile(filePath3, "", (err) => {
-    if (err) {
-      console.error("Error creating file:", err);
-    } else {
-      // console.log("File created successfully:", filePath3);
-    }
-  });
-
-  const filePath4 = path.join(folderPath, "tailwind.config.js");
-  const tailwindContent = `
-  /** @type {import('tailwindcss').Config} */
-    module.exports = {
-      content: ["./*.{js,html}"],
-      theme: {
-        extend: {},
-      },
-      plugins: [],
-  }
-  `;
-  fs.writeFile(filePath4, tailwindContent, (err) => {
-    if (err) {
-      console.error("Error creating file:", err);
-    } else {
-      // console.log("File created successfully:", filePath4);
-    }
-  });
-
-  const filePath5 = path.join(folderPath, "in.css");
-  const inStyle = `
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-  `;
-  fs.writeFile(filePath5, inStyle, (err) => {
-    if (err) {
-      console.error("Error creating file:", err);
-    } else {
-      // console.log("File created successfully:", filePath5);
     }
   });
 }
@@ -105,7 +88,7 @@ function run() {
   });
 
   rl.question("Enter Project Name: ", (name) => {
-    createProjectBoilerPlate(name);
+    writeAll(name);
     console.log(`\nRun: cd ${name}\n`);
     console.log(`\nRun: npx tailwindcss -i in.css -o style.css --watch\n`);
     rl.close();
