@@ -6,11 +6,7 @@ const fs = require("fs");
 const stylesContent = `@tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.fill-screen {
-  width: 100vw;
-  height: 100vh;
-}`;
+`;
 
 const tailwindConfigContentd = `/** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -42,7 +38,7 @@ const createHTMLBoilerplate = (title) => {
     <link rel="stylesheet" href="./style.css" />
     <script defer src="./script.js"></script>
   </head>
-  <body class="fill-screen bg-black">
+  <body class="bg-black">
     <!-- Your Code Goes Here -->    
   </body>
 </html>`;
