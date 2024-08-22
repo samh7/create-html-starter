@@ -1,6 +1,6 @@
 {
   "name": "create-html-starter",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Creates an html project and initializes tailwindcss. Tailwind must be installed for the command to work.",
   "main": "script.js",
   "bin": "script.js",
